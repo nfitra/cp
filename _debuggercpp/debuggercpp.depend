@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1653112954 source:e:\compeprogramming\debuggercpp\main.cpp
+	<iostream>
+	<vector>
+	<string.h>
+
+1653195216 source:e:\#cp_\debuggercpp\main.cpp
+	<iostream>
+	<vector>
+	<string.h>
+
