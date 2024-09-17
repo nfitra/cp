@@ -14,7 +14,6 @@
 #define sz(s) sizeof(s) / sizeof(s[0])
 #define all(s) x.begin(), x.end()
 #define loop(n) for (int i = 0; i < n; i++)
-#define loop2(n) for (int j = 0; j < n; j++)
 #define arrsort(arr) sort(arr, arr + sizeof(arr) / sizeof(arr[0]))
 
 using namespace std;
@@ -23,25 +22,27 @@ int main()
 {
     fast;
 
-    int n;
-    cin >> n;
+    int n, m;
 
-    unordered_map<string, int> db;
-    string s;
+    cin >> n >> m;
 
-    for (int i = 0; i < n; i++)
+    int arr[m];
+    for (int i = 0; i < m; i++)
     {
-        cin >> s;
+        cin >> arr[i];
+    }
 
-        if (db.find(s) != db.end())
+    arrsort(arr);
+
+    int lowestDiff = 1000;
+    for (int i = 0; i <= m - n; i++)
+    {
+        int currDiff = arr[i+n-1] - arr[i];
+        if (currDiff < lowestDiff)
         {
-            db[s]++;
-            cout << s + to_string(db[s]) << endl;
-        }
-        else
-        {
-            db[s] = 0;
-            cout << "OK" << endl;
+            lowestDiff = currDiff;
         }
     }
+
+    cout << lowestDiff << endl;
 }

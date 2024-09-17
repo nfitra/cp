@@ -14,34 +14,59 @@
 #define sz(s) sizeof(s) / sizeof(s[0])
 #define all(s) x.begin(), x.end()
 #define loop(n) for (int i = 0; i < n; i++)
-#define loop2(n) for (int j = 0; j < n; j++)
 #define arrsort(arr) sort(arr, arr + sizeof(arr) / sizeof(arr[0]))
 
 using namespace std;
+
+const int sqrt_lim = 1000000;
+
+set<long long> prime_squares()
+{
+    static bool arr[sqrt_lim];
+
+    for (int i = 2; i * i < sqrt_lim; i++)
+    {
+        if (!arr[i])
+        {
+            for (int j = i * i; j < sqrt_lim; j += i)
+            {
+                arr[j] = true;
+            }
+        }
+    }
+
+    set<long long> res;
+    for (int i = 2; i < sqrt_lim; i++)
+    {
+        if (!arr[i])
+        {
+            res.insert((long long)i * i);
+        }
+    }
+    return res;
+}
 
 int main()
 {
     fast;
 
+    set<long long> sq(prime_squares());
+
     int n;
     cin >> n;
 
-    unordered_map<string, int> db;
-    string s;
-
+    ll x, s;
     for (int i = 0; i < n; i++)
     {
-        cin >> s;
+        cin >> x;
 
-        if (db.find(s) != db.end())
+        if (sq.find(x) != sq.end())
         {
-            db[s]++;
-            cout << s + to_string(db[s]) << endl;
+            cout << "YES" << endl;
         }
         else
         {
-            db[s] = 0;
-            cout << "OK" << endl;
+            cout << "NO" << endl;
         }
     }
 }

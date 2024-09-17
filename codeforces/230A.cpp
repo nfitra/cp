@@ -14,7 +14,6 @@
 #define sz(s) sizeof(s) / sizeof(s[0])
 #define all(s) x.begin(), x.end()
 #define loop(n) for (int i = 0; i < n; i++)
-#define loop2(n) for (int j = 0; j < n; j++)
 #define arrsort(arr) sort(arr, arr + sizeof(arr) / sizeof(arr[0]))
 
 using namespace std;
@@ -23,25 +22,44 @@ int main()
 {
     fast;
 
-    int n;
-    cin >> n;
+    int s, n;
+    cin >> s >> n;
 
-    unordered_map<string, int> db;
-    string s;
+    map<int, multiset<int, greater<int>>> bosses;
 
     for (int i = 0; i < n; i++)
     {
-        cin >> s;
+        int x, y;
+        cin >> x >> y;
 
-        if (db.find(s) != db.end())
+        bosses[x].insert(y);
+    }
+
+    bool loss = 0;
+    for (const auto &pair : bosses)
+    {
+        for (const auto &y : pair.second)
         {
-            db[s]++;
-            cout << s + to_string(db[s]) << endl;
+            if (s > pair.first)
+            {
+                s += y;
+            }
+            else
+            {
+                loss = true;
+                break;
+            }
         }
-        else
-        {
-            db[s] = 0;
-            cout << "OK" << endl;
-        }
+        if (loss)
+            break;
+    }
+
+    if (loss)
+    {
+        cout << "NO" << endl;
+    }
+    else
+    {
+        cout << "YES" << endl;
     }
 }

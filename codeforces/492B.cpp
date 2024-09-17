@@ -14,7 +14,6 @@
 #define sz(s) sizeof(s) / sizeof(s[0])
 #define all(s) x.begin(), x.end()
 #define loop(n) for (int i = 0; i < n; i++)
-#define loop2(n) for (int j = 0; j < n; j++)
 #define arrsort(arr) sort(arr, arr + sizeof(arr) / sizeof(arr[0]))
 
 using namespace std;
@@ -23,25 +22,23 @@ int main()
 {
     fast;
 
-    int n;
-    cin >> n;
+    int n, l;
+    cin >> n >> l;
 
-    unordered_map<string, int> db;
-    string s;
-
+    int arr[n];
     for (int i = 0; i < n; i++)
     {
-        cin >> s;
-
-        if (db.find(s) != db.end())
-        {
-            db[s]++;
-            cout << s + to_string(db[s]) << endl;
-        }
-        else
-        {
-            db[s] = 0;
-            cout << "OK" << endl;
-        }
+        cin >> arr[i];
     }
+
+    arrsort(arr);
+
+    double res = max(arr[0], abs(arr[n - 1] - l));
+    for (int i = 1; i < n; i++)
+    {
+        res = max(res, (double)abs(arr[i - 1] - arr[i]) / 2);
+    }
+
+    cout.precision(20);
+    cout << res << endl;
 }
