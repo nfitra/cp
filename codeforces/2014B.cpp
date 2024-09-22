@@ -5,7 +5,7 @@
 #include <cstring>
 #include <cmath>
 #include <unordered_map>
- 
+
 #define fast ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
 #define lcase(s) transform(s.begin(), s.end(), s.begin(), ::tolower);
 #define ucase(s) transform(s.begin(), s.end(), s.begin(), ::toupper);
@@ -15,12 +15,27 @@
 #define all(s) x.begin(), x.end()
 #define loop(n) for (int i = 0; i < n; i++)
 #define arrsort(arr) sort(arr, arr + sizeof(arr) / sizeof(arr[0]))
- 
+
 using namespace std;
- 
+
 int main()
 {
     fast;
 
-    //freopen("input.txt", "r", stdin);
+    ll t;
+    cin >> t;
+
+    while (t--)
+    {
+        ll n, k;
+        cin >> n >> k;
+
+        ll s = n - k + 1;
+        ll ans = (n + 1) / 2 - s / 2;
+
+        if (ans % 2 != 0)
+            cout << "NO" << endl;
+        else
+            cout << "YES" << endl;
+    }
 }

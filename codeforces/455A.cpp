@@ -22,5 +22,8 @@ int main()
 {
     fast;
 
-    //freopen("input.txt", "r", stdin);
+    int n;
+    cin >> n;
+
+    
 }
