@@ -5,7 +5,7 @@
 #include <cstring>
 #include <cmath>
 #include <unordered_map>
-
+ 
 #define fast ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
 #define lcase(s) transform(s.begin(), s.end(), s.begin(), ::tolower);
 #define ucase(s) transform(s.begin(), s.end(), s.begin(), ::toupper);
@@ -15,27 +15,19 @@
 #define all(s) x.begin(), x.end()
 #define loop(n) for (int i = 0; i < n; i++)
 #define arrsort(arr) sort(arr, arr + sizeof(arr) / sizeof(arr[0]))
-
+ 
 using namespace std;
-
+ 
 int main()
 {
     fast;
 
-    int N;
-    cin >> N;
+    string s,t;
+    cin >> s >> t;
 
-    int bestR = 1;
-    int bestC = N;
-    for (int r = 1; r <= N; r++)
+    while(s.find(t) != string::npos)
     {
-        int c = N / r;
-        if ((c - r < bestC - bestR) && r <= c && N % r == 0)
-        {
-            bestR = r;
-            bestC = c;
-        }
+        s = s.erase(s.find(t), t.size());
     }
-
-    cout << bestR << " " << bestC << endl;
+    cout << s << endl;
 }
