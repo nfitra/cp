@@ -5,7 +5,7 @@
 #include <cstring>
 #include <cmath>
 #include <unordered_map>
- 
+
 #define fast ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
 #define lcase(s) transform(s.begin(), s.end(), s.begin(), ::tolower);
 #define ucase(s) transform(s.begin(), s.end(), s.begin(), ::toupper);
@@ -15,31 +15,41 @@
 #define all(s) x.begin(), x.end()
 #define loop(n) for (int i = 0; i < n; i++)
 #define arrsort(arr) sort(arr, arr + sizeof(arr) / sizeof(arr[0]))
- 
+
 using namespace std;
- 
+
 int main()
 {
     fast;
 
-    int n,m;
-    cin >> n >> m;
+    int n;
+    cin >> n;
 
-    int arr[n][m];
-    for(int i=0; i<n; i++)
+    map<int, int> m;
+    for (int i = 0; i < n; i++)
     {
-        for(int j=0; j<m; j++)
-        {
-            cin >> arr[i][j];
-        }
+        int tmp;
+        cin >> tmp;
+
+        if (m.find(tmp) != m.end())
+            m[tmp]++;
+        else
+            m.insert({tmp, 1});
     }
 
-    for(int j=0; j<m; j++)
+    for (int i = 1; i < n; i++)
     {
-        for(int i=n-1; i>=0; i--)
-        {
-            cout << arr[i][j] << " ";
-        }
-        cout << endl;
+        cout << i << " " << m[i] << endl;
     }
+
+    // int modus, max=0;
+    // for (int i = 1; i < n; i++)
+    // {
+    //     if(m[i] > max) {
+    //         modus = i;
+    //         max = m[i];
+    //     }
+    // }
+
+    // cout << modus << endl;
 }
