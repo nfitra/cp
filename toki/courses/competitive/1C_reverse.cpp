@@ -5,7 +5,6 @@
 #include <cstring>
 #include <cmath>
 #include <unordered_map>
-#include <tuple>
 
 #define fast ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
 #define lcase(s) transform(s.begin(), s.end(), s.begin(), ::tolower);
@@ -19,9 +18,28 @@
 
 using namespace std;
 
+int reverse(int x)
+{
+    int tmp = x;
+    int ret = 0;
+
+    while(tmp > 0)
+    {
+        ret = (ret * 10) + (tmp % 10);
+        tmp = tmp / 10;
+    }
+
+    return ret;
+}
+
 int main()
 {
     fast;
 
-    // freopen("input.txt", "r", stdin);
+    int a,b;
+    cin >> a >> b;
+
+    int add = reverse(a) + reverse(b);
+
+    cout << reverse(add) << endl;
 }

@@ -14,7 +14,7 @@
 #define sz(s) sizeof(s) / sizeof(s[0])
 #define all(s) x.begin(), x.end()
 #define loop(n) for (int i = 0; i < n; i++)
-#define arrsort(arr) sort(arr, arr + sizeof(arr) / sizeof(arr[0]))
+#define sortarr(arr) sort(arr, arr + sizeof(arr) / sizeof(arr[0]))
 
 using namespace std;
 
@@ -22,34 +22,22 @@ int main()
 {
     fast;
 
-    int n;
-    cin >> n;
+    string a, b;
+    cin >> a >> b;
 
-    map<int, int> m;
-    for (int i = 0; i < n; i++)
+    bool ans = 0;
+    for (int i = 0; i < a.size(); i++)
     {
-        int tmp;
-        cin >> tmp;
-
-        if (m.find(tmp) != m.end())
-            m[tmp]++;
-        else
-            m.insert({tmp, 1});
+        string tmp = a;
+        if (tmp.erase(i, 1) == b)
+        {
+            ans = 1;
+            break;
+        }
     }
 
-    for (int i = 1; i < n; i++)
-    {
-        cout << i << " " << m[i] << endl;
-    }
-
-    // int modus, max=0;
-    // for (int i = 1; i < n; i++)
-    // {
-    //     if(m[i] > max) {
-    //         modus = i;
-    //         max = m[i];
-    //     }
-    // }
-
-    // cout << modus << endl;
+    if (ans)
+        cout << "Tentu saja bisa!" << endl;
+    else
+        cout << "Wah, tidak bisa :(" << endl;
 }

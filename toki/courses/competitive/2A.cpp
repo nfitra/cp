@@ -19,9 +19,31 @@
 
 using namespace std;
 
+ll getGcd(ll a, ll b)
+{
+    if (a == 0)
+        return b;
+    else if (b == 0)
+        return a;
+    else
+        return getGcd(b, a % b);
+}
+
 int main()
 {
     fast;
 
-    // freopen("input.txt", "r", stdin);
+    ll a, b, c, d;
+    ll e, f;
+
+    cin >> a >> b >> c >> d;
+
+    e = a * d + b * c;
+    f = b * d;
+
+    int gcd = getGcd(e, f);
+    e /= gcd;
+    f /= gcd;
+
+    cout << e << " " << f << endl;
 }
